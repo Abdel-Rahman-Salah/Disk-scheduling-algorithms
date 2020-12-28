@@ -181,6 +181,50 @@ public class Disk {
              
         }
     
+        public void look()
+        {
+            ArrayList <Integer> left = new ArrayList<>(); // arraylist to keep requests before head 
+            ArrayList <Integer> right = new ArrayList<>(); // arraylist to keep requests after head 
+            int total_mov=0;
+            
+             for(int i=0;i<tracks.size();i++) // splitting requests into left and right arraylists 
+            {
+               if(tracks.get(i)<head)
+               left.add(tracks.get(i));
+               else if(tracks.get(i)>head)
+               right.add(tracks.get(i));
+            }
+            Collections.sort(left); //sorting the left arraylist 
+            Collections.sort(right); //sorting the right arrayliist
+            System.out.println("Seek sequence : ");
+            for(int j=0;j<2;j++)
+            {
+                if("left".equals(direction)) //serve tracks in left direction 1 by 1 
+                {
+                    for(int i=left.size()-1;i>=0;i--)
+                    {
+                        total_mov+=Math.abs(left.get(i)-head);
+                        head=left.get(i);
+                        System.out.println(left.get(i));
+                    }
+                    direction="right"; // direction is reversed  
+                }
+                else
+                {
+                    for(int i=0;i<right.size();i++) //serve tracks in right direction 1 by 1 
+                    {
+                        total_mov+=Math.abs(right.get(i)-head);
+                        head=right.get(i);
+                        System.out.println(right.get(i));
+                    }
+                    direction="left"; //direction is reversed 
+                }
+            }
+           
+             System.out.println("Total number of head movements  :" +total_mov);
+             System.out.println("Total seek time  :" +total_mov*seek_t_cyl+" msec");
+        }
+    
 }
 
     
