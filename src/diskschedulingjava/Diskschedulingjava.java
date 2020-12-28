@@ -25,7 +25,7 @@ public class Diskschedulingjava
         int choice,repeat;
         //kkkkk;l;,l
         Scanner s=new Scanner(System.in);
-    
+    //jj
         do
         {
             Disk d=new Disk();
