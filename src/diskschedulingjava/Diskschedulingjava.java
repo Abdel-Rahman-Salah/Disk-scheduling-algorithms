@@ -13,7 +13,7 @@ public class Diskschedulingjava
         //shams beygarab
         //shams beygarab tany
         //shams w abdo bygarabo
-        
+        ///abdo tgrba
          
          
 
