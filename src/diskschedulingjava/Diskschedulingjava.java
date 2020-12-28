@@ -11,10 +11,11 @@ public class Diskschedulingjava
         //bngrb
         //bngrb
         //shams beygarab
-        
+        //shams beygarab tany
         
          
          
+
 
         int choice,repeat;
         
