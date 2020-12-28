@@ -14,7 +14,7 @@ public class Diskschedulingjava
         //shams beygarab tany
         //shams w abdo bygarabo
         ///abdo tgrba
-         
+         //abdo tagrba ll mara al million
          
 
 
