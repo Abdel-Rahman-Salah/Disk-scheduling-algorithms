@@ -17,6 +17,9 @@ public class Diskschedulingjava
          
         //shams error test
 
+        ///abdo tgrba
+         //abdo tagrba ll mara al million
+         
 
 
         int choice,repeat;
