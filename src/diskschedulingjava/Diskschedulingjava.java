@@ -28,6 +28,7 @@ public class Diskschedulingjava
     //jj
         do
         {
+          //nnnkkm
             Disk d=new Disk();
             System.out.println("Enter your desired disk scheduling algorithms : ");
             System.out.println("1-FCFS");

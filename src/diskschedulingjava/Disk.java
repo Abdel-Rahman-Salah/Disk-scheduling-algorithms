@@ -116,7 +116,74 @@ public class Disk {
              System.out.println("Total number of head movements  :" +total_mov);
              System.out.println("Total seek time  :" +total_mov*seek_t_cyl+" msec");
         }
+    public void cscan()
+        {
+           ArrayList <Integer> left = new ArrayList<>(); // arraylist to keep requests before head 
+            ArrayList <Integer> right = new ArrayList<>(); // arraylist to keep requests after head 
+            int total_mov=0;
+            left.add(0); //adding a lower boundry to  the left arraylist
+            right.add(upperboundry); //adding a upper boundry to the right arraylist
+            for(int i=0;i<tracks.size();i++) // splitting requests into left and right arraylists 
+            {
+               if(tracks.get(i)<head)
+               left.add(tracks.get(i));
+               else if(tracks.get(i)>head)
+               right.add(tracks.get(i));
+            }
+            Collections.sort(left); //sorting the left arraylist 
+            Collections.sort(right); //sorting the right arrayliist
+            System.out.println("Seek sequence : ");
+         
+                if("left".equals(direction)) 
+                {
+                      for(int i=left.size();i>0;i--) //serve left array tracks in left direction 1 by 1 
+                    {   
+                          
+                          
+                        total_mov+=Math.abs(left.get(i-1)-head);
+                        head=left.get(i-1);
+                        System.out.println(left.get(i-1));
+                    }
+                      
+                        for(int i=right.size();i>0;i--) //serve right array tracks in left direction 1 by 1 
+                    {
+                        total_mov+=Math.abs(right.get(i-1)-head);
+                        head=right.get(i-1);
+                        System.out.println(right.get(i-1));
+                    }
+                   System.out.println("Total number of head movements  :" +total_mov);
+                   System.out.println("Total seek time  :" +total_mov*seek_t_cyl+" msec");
+                }
+                else
+                {
+                    
+                    for(int i=0;i<right.size();i++) //serve right array tracks in right direction 1 by 1 
+                    {
+                        total_mov+=Math.abs(right.get(i)-head); 
+                        head=right.get(i);
+                        System.out.println(right.get(i));
+                    }
+                    System.out.println(head);
+                    System.out.println(total_mov);
+                
+                 for(int i=0;i<left.size();i++) //left array tracks in right direction 1 by 1 
+                    {
+                        
+                        total_mov+=Math.abs(left.get(i)-head);
+                        head=left.get(i);
+                        System.out.println(left.get(i));
+                    }
+                  System.out.println("Total number of head movements  :" +total_mov);
+                  System.out.println("Total seek time  :" +total_mov*seek_t_cyl+" msec");
+               
+            }
+           
+             
+        }
     
 }
+
+    
+
 
 
