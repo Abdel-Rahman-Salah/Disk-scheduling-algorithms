@@ -9,7 +9,7 @@ public class Diskschedulingjava
 
     public static void main(String[] args) {
         //bngrb
-        
+        //hello
         
          
          
