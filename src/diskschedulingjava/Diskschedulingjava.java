@@ -13,10 +13,10 @@ public class Diskschedulingjava
         //shams beygarab
         //shams beygarab tany
         //shams w abdo bygarabo
-        //shams error test
         
          
-         
+        //shams error test
+
 
 
         int choice,repeat;
