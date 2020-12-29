@@ -8,33 +8,23 @@ public class Diskschedulingjava
 {
 
     public static void main(String[] args) {
-        //bngrb
-        //bngrb
-        //shams beygarab
-        //shams beygarab tany
-        //shams w abdo bygarabo
-        
-         
-        //shams error test
-
-        ///abdo tgrba
-         //abdo tagrba ll mara al million
-         
+      
 
 
         int choice,repeat;
-        //kkkkk;l;,l
+        
         Scanner s=new Scanner(System.in);
-    //jj
+    
         do
         {
-          //nnnkkm
+          
             Disk d=new Disk();
             System.out.println("Enter your desired disk scheduling algorithms : ");
             System.out.println("1-FCFS");
             System.out.println("2-SCAN");
             System.out.println("3-CSCAN");
             System.out.println("4-LOOK");
+            System.out.println("5-CLOOK");
             choice= s.nextInt();
              
             switch (choice) // validation to make sure user choose valid algorithm 
@@ -62,8 +52,13 @@ public class Diskschedulingjava
                     d.direction=s.next();
                     d.look();
                     break;
-                
-                default:
+                 case 5:
+                    d.inputsetup();
+                    System.out.println("Enter the direction of the head");
+                    d.direction=s.next();
+                    d.clook();
+                    break;
+                    default:
                     System.out.println("invalid input");
                 
             }
