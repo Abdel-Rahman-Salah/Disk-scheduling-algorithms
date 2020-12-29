@@ -286,6 +286,64 @@ public class Disk {
            
              
         }
+        public void SSTF()
+        {
+            ArrayList <Integer> left = new ArrayList<>(); // arraylist to keep requests before head 
+            ArrayList <Integer> right = new ArrayList<>(); // arraylist to keep requests after head 
+            int total_mov=0;
+            System.out.println("Seek sequence : ");
+            for(int i=0;i<tracks.size();i++) // splitting requests into left and right arraylists 
+            {
+               if(tracks.get(i)<head)
+               left.add(tracks.get(i));
+               else if(tracks.get(i)>head)
+               right.add(tracks.get(i));
+            }
+            Collections.sort(left); //sorting the left arraylist 
+            Collections.sort(right); //sorting the right arrayliist
+            for(int k=0;k<tracks.size();k++)
+            {
+                
+                int Ldistance=head-left.get(left.size()-1);
+                int Rdistance=right.get(0)-head;
+                if(Ldistance<Rdistance)
+                {
+                    total_mov+=Math.abs(left.get(left.size()-1)-head);
+                    head=left.get(left.size()-1);
+                    left.remove(left.size()-1);
+                    System.out.println(head);
+                    if(left.isEmpty())
+                    {
+                        for(int r=0;r<right.size();r++)
+                        {
+                            total_mov+=Math.abs(right.get(r)-head);
+                            head=right.get(r);
+                            System.out.println(head);
+                        }
+                        break;
+                    }
+                }
+                else
+                {
+                    total_mov+=Math.abs(right.get(0)-head); 
+                    head=right.get(0);
+                    right.remove(0);
+                    System.out.println(head);
+                    if(right.isEmpty())
+                    {
+                        for(int l=left.size();l>0;l--)
+                        {
+                            total_mov+=Math.abs(left.get(l-1)-head);
+                            head=left.get(l-1);
+                            System.out.println(head);
+                        }
+                        break;
+                    }
+                }
+            }
+                    System.out.println("Total number of head movements  :" +total_mov);
+                    System.out.println("Total seek time  :" +total_mov*seek_t_cyl+" msec");
+        }
     
 }
 
