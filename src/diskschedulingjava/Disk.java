@@ -301,20 +301,20 @@ public class Disk {
             }
             Collections.sort(left); //sorting the left arraylist 
             Collections.sort(right); //sorting the right arrayliist
-            for(int k=0;k<tracks.size();k++)
+            for(int k=0;k<tracks.size();k++)         
             {
                 
-                int Ldistance=head-left.get(left.size()-1);
-                int Rdistance=right.get(0)-head;
-                if(Ldistance<Rdistance)
+                int Ldistance=head-left.get(left.size()-1);   //calculating distance between head and the first request on it's left side 
+                int Rdistance=right.get(0)-head;               //calculating distance between head and the first request on it's right side 
+                if(Ldistance<Rdistance)                        //checking which distance is smaller 
                 {
-                    total_mov+=Math.abs(left.get(left.size()-1)-head);
-                    head=left.get(left.size()-1);
-                    left.remove(left.size()-1);
-                    System.out.println(head);
-                    if(left.isEmpty())
+                    total_mov+=Math.abs(left.get(left.size()-1)-head);   //adding absolute distances to calculate no of head movements 
+                    head=left.get(left.size()-1);                            //changing head to current request 
+                    left.remove(left.size()-1);                              // remove already visited request
+                    System.out.println(head);                                
+                    if(left.isEmpty())                                       // this happens when all left requests are served . 
                     {
-                        for(int r=0;r<right.size();r++)
+                        for(int r=0;r<right.size();r++)                       //serve requests in right direction 
                         {
                             total_mov+=Math.abs(right.get(r)-head);
                             head=right.get(r);
@@ -323,17 +323,17 @@ public class Disk {
                         break;
                     }
                 }
-                else
+                else                                                    
                 {
                     total_mov+=Math.abs(right.get(0)-head); 
                     head=right.get(0);
                     right.remove(0);
                     System.out.println(head);
-                    if(right.isEmpty())
+                    if(right.isEmpty())                  // this happens when all right requests are served .
                     {
-                        for(int l=left.size();l>0;l--)
+                        for(int l=left.size();l>0;l--)        //serve requests in left direction 
                         {
-                            total_mov+=Math.abs(left.get(l-1)-head);
+                            total_mov+=Math.abs(left.get(l-1)-head);   //adding absolute distances to calculate no of head movements
                             head=left.get(l-1);
                             System.out.println(head);
                         }
